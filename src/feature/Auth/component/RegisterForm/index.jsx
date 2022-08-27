@@ -17,7 +17,7 @@ function RegisterForm(props) {
 
 
     const schema = yup.object().shape({
-        fullname: yup.string().required('Enter fullname'),
+        fullname: yup.string().required('Enter full name'),
     });
     const form = useForm({
         defaultValues: {
