@@ -24,6 +24,9 @@ function RegisterForm(props) {
 
         email: yup.string().required('Please enter email')
             .email('Please enter a valid email address'),
+
+        password: yup.string().required('Enter password')
+            .min(6, 'Please enter 6 character')
     });
     const form = useForm({
         defaultValues: {

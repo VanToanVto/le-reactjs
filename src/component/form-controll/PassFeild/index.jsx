@@ -8,6 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { FormHelperText } from '@mui/material';
 PasswordFeild.propTypes = {
     form: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
@@ -18,16 +19,14 @@ PasswordFeild.propTypes = {
 
 function PasswordFeild(props) {
     const { form, name, label, disable } = props;
-    const { errors, formState } = form;
-    const hasError = formState.touched[name] && errors[name];
+    const { errors } = form;
+    const hasError = errors[name];
     const [showPass, setShowPass] = useState(false);
 
     const toggleShowPass = () => {
         setShowPass(x => !x);
     }
     return (
-
-
 
         <FormControl fullWidth margin='normal' variant="outlined">
             <InputLabel htmlFor={name}>{label}</InputLabel>
@@ -51,8 +50,9 @@ function PasswordFeild(props) {
                 label={label}
                 disabled={disable}
                 error={!!hasError}
-                helperText={errors[name]?.message}
             />
+
+            <FormHelperText error={!!hasError} > helperText={errors[name]?.message}</FormHelperText>
         </FormControl>
 
     );
