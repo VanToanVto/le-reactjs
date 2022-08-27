@@ -51,7 +51,7 @@ function PasswordFeild(props) {
                 label={label}
                 disabled={disable}
                 error={!!hasError}
-            // helperText={errors[name]?.message}
+                helperText={errors[name]?.message}
             />
         </FormControl>
 
