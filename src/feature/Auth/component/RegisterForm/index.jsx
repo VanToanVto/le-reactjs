@@ -20,7 +20,10 @@ function RegisterForm(props) {
         fullname: yup.string().required('Enter full name')
             .test('At least 2 word', 'Please enter at least 2 word', value => {
                 return value.split(' ').length >= 2;
-            })
+            }),
+
+        email: yup.string().required('Please enter email')
+            .email('Please enter a valid email address'),
     });
     const form = useForm({
         defaultValues: {
