@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect } from 'react';
+import TodoFeature from './feature/Todo';
+import AlbumFeature from './feature/Album';
+import { Route } from 'react-router-dom';
+import Heading from './component/Header';
+import productApi from './api/productApi';
 function App() {
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const productList = await productApi.getAll();
+      console.log(productList);
+    }
+    fetchProducts();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          VanToanVTO
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Heading />
+
+      <Route path='/album' component={AlbumFeature} />
+
+      <Route path='/todo' component={TodoFeature} />
     </div>
   );
 }
