@@ -26,7 +26,10 @@ function RegisterForm(props) {
             .email('Please enter a valid email address'),
 
         password: yup.string().required('Enter password')
-            .min(6, 'Please enter 6 character')
+            .min(6, 'Please enter 6 character'),
+        rePass: yup.string().required('Please enter re-pass')
+            .oneOf([yup.ref('password')], 'Please does not match'),
+
     });
     const form = useForm({
         defaultValues: {
