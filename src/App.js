@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import Heading from './component/Header';
 import productApi from './api/productApi';
 import Footer from './component/Footer';
+import Content from './component/Content';
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
       <Route path='/album' component={AlbumFeature} />
 
       <Route path='/todo' component={TodoFeature} />
+
+      <Content />
 
       <Footer />
     </div>
