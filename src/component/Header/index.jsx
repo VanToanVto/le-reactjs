@@ -13,13 +13,14 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import Register from '../../feature/Auth/component/Register';
+import LoginForm from '../../feature/Auth/component/LoginForm';
 
 
 
 
 export default function Heading() {
     const [open, setOpen] = React.useState(false);
-
+    const [openLog, setOpenLog] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -28,8 +29,13 @@ export default function Heading() {
         setOpen(false);
     };
 
+    const handleClickOpenLog = () => {
+        setOpenLog(true);
+    };
 
-
+    const handleCloseLog = () => {
+        setOpenLog(false);
+    };
     return (
         <div>
             <Box sx={{ flexGrow: 1 }}>
@@ -46,8 +52,7 @@ export default function Heading() {
                         </IconButton>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             <Link to="/" className='link'>
-                                VTO Store
-
+                                VTO
                             </Link>
                         </Typography>
                         <NavLink to="/todo" className='link'>
@@ -57,7 +62,7 @@ export default function Heading() {
                         <NavLink to="/album" className='link'>
                             <Button color="inherit">Album</Button>
                         </NavLink>
-                        <Button color="inherit">Login</Button>
+                        <Button color="inherit" onClick={handleClickOpenLog}>Login</Button>
                         <Button color="inherit" onClick={handleClickOpen}>Register</Button>
                     </Toolbar>
                 </AppBar>
@@ -66,9 +71,20 @@ export default function Heading() {
                 <DialogContent >
 
                     <Register />
+
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog disableEscapeKeyDown open={openLog} onClose={handleCloseLog} className='dialogRe'>
+                <DialogContent >
+                    <LoginForm />
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseLog}>Cancel</Button>
                 </DialogActions>
             </Dialog>
         </div>
